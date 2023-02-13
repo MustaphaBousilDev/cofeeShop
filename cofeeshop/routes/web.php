@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -23,6 +23,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
+    
     Route::get('/dashboard/admin/category',[CategoryController::class,'index'])->name('all.category');
     Route::post('/dashboard/admin/category/add',[CategoryController::class,'Add'])->name('store.category');
     Route::get('/dashboard/admin/category/edit/{id}',[CategoryController::class,'Edit'])->name('edit.category');
