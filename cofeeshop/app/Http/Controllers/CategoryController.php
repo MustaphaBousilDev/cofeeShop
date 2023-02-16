@@ -24,13 +24,13 @@ class CategoryController extends Controller
         $data=array();
         $data['name']=$request->name;
         $data['user_id']=Auth::user()->id;
-        DB::table('categories')->insert($data);
+        Category::create($data);
         return Redirect()->back()->with('success','Category Inserted Succesefly');
     } 
     
     public function Edit($id){
         #$categories=Category::find($id);
-        $categories=DB::table('categories')->where('id',$id)->first();
+        $categories=Category::find($id)->first();
         return view('admin.category.edit',compact('categories'));
     }
     
@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $data=array();
         $data['name']=$request->name;
         $data['user_id']=Auth::user()->id;
-        DB::table('categories')->where('id',$id)->update($data);
+        Category::find($id)->update($data);
         return Redirect()->route('all.category')->with('success','Category Updated Su ccesfly');
     }
     public function destroy($id){

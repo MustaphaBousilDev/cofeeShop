@@ -42,7 +42,7 @@
                                 <td>{{ $category->user->name }}</td>
                                 <td>
                                     @if($category->created_at==NULL)
-                                        <span class="text-danger">No fucking date</span>
+                                        <span class="text-danger"> date</span>
                                     @else
                                         {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
                                     @endif
@@ -53,7 +53,6 @@
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger" style="background:red" type="submit">delete</button>
-
                                     </form>
                                 </td>
                             </tr>
@@ -80,7 +79,7 @@
                             @enderror
                         </div>
                         <div class="mt-3">
-                            <button type="submit" class="btn btn-primary ">Add Category</button>
+                            <button style="background-color:blue" type="submit" class="btn btn-primary ">Add Category</button>
                         </div>
                     </form>
                 </div>
